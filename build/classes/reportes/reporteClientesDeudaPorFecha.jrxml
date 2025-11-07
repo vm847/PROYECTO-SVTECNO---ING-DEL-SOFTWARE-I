@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="focusart_compras" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79e751cf-9b22-46f5-ae74-2670f5ff464c">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="178"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="817"/>
+	<parameter name="fecha_desde" class="java.util.Date"/>
+	<parameter name="fecha_hasta" class="java.util.Date"/>
+	<parameter name="logo" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="estado_venta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT cc.fecha_inicio_credito, cl.cod_cliente, CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente), 
+sum(cdc.monto_cuota), vc.cod_venta_cabecera, vc.usuario_insercion FROM cuotas_credito_cliente cdc
+JOIN credito_cliente cc ON cdc.cod_credito_cliente = cc.cod_credito_cliente
+JOIN ventas_cabecera vc ON cc.cod_venta = vc.cod_venta_cabecera
+JOIN clientes cl ON vc.cod_cliente = cl.cod_cliente
+WHERE estado_cuota='ACTIVO' AND vc.fecha_venta >= $P{fecha_desde}  AND vc.fecha_venta <= $P{fecha_hasta}  
+GROUP BY cc.cod_credito_cliente]]>
+	</queryString>
+	<field name="fecha_inicio_credito" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_inicio_credito"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_inicio_credito"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="credito_cliente"/>
+	</field>
+	<field name="cod_cliente" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_cliente"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_cliente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="clientes"/>
+	</field>
+	<field name="CONCAT(cl.nombre_cliente,&apos; &apos;,cl.apellido_cliente)" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name">
+			<![CDATA[CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente)]]>
+		</property>
+		<property name="com.jaspersoft.studio.field.label">
+			<![CDATA[CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente)]]>
+		</property>
+	</field>
+	<field name="sum(cdc.monto_cuota)" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="sum(cdc.monto_cuota)"/>
+		<property name="com.jaspersoft.studio.field.label" value="sum(cdc.monto_cuota)"/>
+	</field>
+	<field name="cod_venta_cabecera" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_venta_cabecera"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_venta_cabecera"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas_cabecera"/>
+	</field>
+	<field name="usuario_insercion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="usuario_insercion"/>
+		<property name="com.jaspersoft.studio.field.label" value="usuario_insercion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas_cabecera"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="165" y="0" width="233" height="32" backcolor="#FFFFFF" uuid="6842520f-9fc5-4489-b221-b831bacc2760"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVERFIN S.A.E.C.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="47" width="233" height="15" uuid="34f143d5-cffc-4164-bbd8-eaa523a49cd1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel/Cel: 0212883000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="77" width="233" height="18" uuid="0ee0344f-02c9-4c9d-b681-a891c2faae74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEUDAS CLIENTE]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="76" width="100" height="20" uuid="7658e4c9-8418-4c01-959d-90d189826455"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="56" width="100" height="20" uuid="26e5641e-40a4-4ea5-b93b-b691a0e1565a"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="32" width="233" height="15" uuid="e848366d-3487-4264-b725-c49356987abb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avda. Artigas 3968]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="62" width="233" height="15" uuid="c6b097f7-849d-4470-a1d9-006cab7e6943"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepción - Paraguay]]></text>
+			</staticText>
+			<rectangle radius="2">
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="95" forecolor="#999999" backcolor="#FFFFFF" uuid="fca08e6d-07b7-404f-913c-5861f35dca65"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="276" y="15" width="50" height="18" uuid="74713f8c-9169-4428-af9a-16f82a2598cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[HASTA:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="326" y="15" width="100" height="18" uuid="1c551220-b642-4093-8e60-db0f29f2015e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_hasta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="176" y="15" width="100" height="18" uuid="54185465-d738-4473-8d42-4e475c3e214b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="15" width="50" height="18" uuid="2f08bf8b-4db2-409a-b18e-7d253a987b17"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DESDE:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="414" y="0" width="77" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="6122edca-e639-4673-9158-f15355812873"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NUM VENTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="0" width="81" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="8717a03f-59be-4055-ae74-cd33504cf516"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="326" y="0" width="88" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="51f8b352-f54f-4efe-aa90-68a3dce7c755"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SALDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="80" y="0" width="72" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="4a3cbff7-3f40-4eb0-9098-850aa592523f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COD CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="491" y="0" width="64" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="798e982c-f602-423a-bac7-ce1d30137f6a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[INSERCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="150" y="0" width="176" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="93117829-7056-4c0d-954e-5c85baca4d66"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NOMBRE CLIENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="15" width="555" height="1" uuid="c9ac1dd3-e310-4dc8-8fc0-f111735fe941"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement x="-1" y="15" width="556" height="1" uuid="a13404cf-d9c8-4f12-a035-e459cc15d38a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="80" height="15" uuid="25487356-6f57-42a5-b051-80405c087dc3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fc6414b6-287b-4475-be4a-b08073184642"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_inicio_credito}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="0" width="70" height="15" uuid="17493d63-04b1-4c49-89e1-fa22abe8b2be">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="eda8dd4d-c2b2-4c6b-aca4-a4537efd798c"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cod_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="0" width="176" height="15" uuid="c6cf0eaf-229c-49f6-bab5-d08b12d67276">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5309ecd3-dc03-4545-9c21-ca046c84b0e2"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CONCAT(cl.nombre_cliente,' ',cl.apellido_cliente)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="326" y="0" width="88" height="15" uuid="e8b71118-3672-461e-b2bf-d35a45571d02">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="26f4c8cb-34a2-4d13-9da1-3a402b68833a"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{sum(cdc.monto_cuota)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="77" height="15" uuid="4391a1e6-3236-4592-b025-06da6b8cc445">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ee0e51b6-5821-4437-85e5-8eac0f80eb9a"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cod_venta_cabecera}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="491" y="0" width="64" height="15" uuid="9ff57ddc-b978-46da-83fc-915844b39bf9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07313b31-8fe7-4cfd-9d86-dec7903f24ae"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{usuario_insercion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="34" splitType="Stretch"/>
+	</summary>
+</jasperReport>

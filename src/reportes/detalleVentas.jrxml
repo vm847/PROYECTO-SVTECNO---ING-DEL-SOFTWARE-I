@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="detalleVentas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3efaaa73-1d75-4460-84fa-8efea34a44b2">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+	<subDataset name="Dataset1" uuid="972136f3-53e5-4c93-8af9-1945f0ce4e43">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="localhost"/>
+		<queryString language="SQL">
+			<![CDATA[call obtenerDetallesVenta('1');]]>
+		</queryString>
+		<field name="codigo" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="cod_producto"/>
+			<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+		</field>
+		<field name="concepto" class="byte[]">
+			<property name="com.jaspersoft.studio.field.name" value="nombre_producto"/>
+			<property name="com.jaspersoft.studio.field.label" value="concepto"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+		</field>
+		<field name="cantidad" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="cantidad_producto"/>
+			<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+		</field>
+		<field name="precio" class="java.lang.Float">
+			<property name="com.jaspersoft.studio.field.name" value="precio_producto"/>
+			<property name="com.jaspersoft.studio.field.label" value="precio"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+		</field>
+		<field name="EXENTAS" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="EXENTAS"/>
+			<property name="com.jaspersoft.studio.field.label" value="EXENTAS"/>
+		</field>
+		<field name="5%" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="5%"/>
+			<property name="com.jaspersoft.studio.field.label" value="5%"/>
+		</field>
+		<field name="10%" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="10%"/>
+			<property name="com.jaspersoft.studio.field.label" value="10%"/>
+		</field>
+		<group name="codigo">
+			<groupExpression><![CDATA[$F{codigo}]]></groupExpression>
+		</group>
+		<group name="concepto">
+			<groupExpression><![CDATA[$F{concepto}]]></groupExpression>
+		</group>
+		<group name="cantidad">
+			<groupExpression><![CDATA[$F{cantidad}]]></groupExpression>
+		</group>
+		<group name="precio">
+			<groupExpression><![CDATA[$F{precio}]]></groupExpression>
+		</group>
+		<group name="EXENTAS">
+			<groupExpression><![CDATA[$F{EXENTAS}]]></groupExpression>
+		</group>
+		<group name="5%">
+			<groupExpression><![CDATA[$F{5%}]]></groupExpression>
+		</group>
+		<group name="10%">
+			<groupExpression><![CDATA[$F{10%}]]></groupExpression>
+		</group>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[call obtenerDetallesVenta("1");]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="codigo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+	</field>
+	<field name="concepto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="concepto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="productos"/>
+	</field>
+	<field name="cantidad" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="cantidad_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+	</field>
+	<field name="precio" class="java.lang.Float">
+		<property name="com.jaspersoft.studio.field.name" value="precio_producto"/>
+		<property name="com.jaspersoft.studio.field.label" value="precio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="ventas_detalle"/>
+	</field>
+	<field name="EXENTAS" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="EXENTAS"/>
+		<property name="com.jaspersoft.studio.field.label" value="EXENTAS"/>
+	</field>
+	<field name="5%" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="5%"/>
+		<property name="com.jaspersoft.studio.field.label" value="5%"/>
+	</field>
+	<field name="10%" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="10%"/>
+		<property name="com.jaspersoft.studio.field.label" value="10%"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="243" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="15" width="215" height="20" backcolor="#FFFFFF" uuid="59061c75-4786-4487-ae93-85e00ad49f27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVERFIN S.A.E.C.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="55" width="215" height="10" uuid="e5d5f65a-9555-4c69-afcb-bff7f3d5a61b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[info@inverfin.com.py   -  Call Center: 0212883000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="35" width="215" height="10" uuid="736f8fb7-a7df-4098-b99c-94b1722c8770"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Actividades de Compra y Venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="65" width="215" height="10" uuid="e10dabe6-9cd7-42d2-8c96-2c7a266ad6de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Concepción - Paraguay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="45" width="215" height="10" uuid="a1d50b6f-ba1d-4745-8ba1-363901471528"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Avda. Artigas 3968]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement mode="Opaque" x="3" y="90" width="549" height="130" forecolor="#030303" backcolor="#BDBDBD" uuid="a5065498-0a42-44d2-84f5-619b41df0939">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset1" uuid="3ae72a8f-bf5a-4d2e-98bd-e86e0d013686"/>
+					<jr:column width="56" uuid="0428468e-8bc8-4f5b-835a-a641f4a6aa0f">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="56" height="30" uuid="674b7c55-307d-4a12-8a1e-120e5edbb488"/>
+								<text><![CDATA[codigo]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="56" height="30" uuid="df824fae-d570-4fa7-ba19-54543be081ac"/>
+								<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="196" uuid="8c7e50ee-3367-4728-a099-c86bbba7b4b9">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="196" height="30" uuid="91ad72f3-9f6d-42c2-8c65-ab9ae24f40f1"/>
+								<text><![CDATA[concepto]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="196" height="30" uuid="465bb492-4b30-48d7-9bc6-e6cf9c783171"/>
+								<textFieldExpression><![CDATA[$F{concepto}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="56" uuid="1138d2e9-4b54-426e-95f1-6c6658489d7f">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="56" height="30" uuid="dd568c49-79b3-4d4f-971e-296d4a4a6404"/>
+								<text><![CDATA[cantidad]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="56" height="30" uuid="f64133b1-af13-41ca-835a-82bd01868c83"/>
+								<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="56" uuid="ae9a9a89-0539-4203-b37d-a1749b6698e4">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="56" height="30" uuid="e44db813-6d00-4dea-ad40-83eb04de14a7"/>
+								<text><![CDATA[precio]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="56" height="30" uuid="09beffb8-f552-42e2-ae09-07fa2d748f83"/>
+								<textFieldExpression><![CDATA[$F{precio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="66" uuid="0fc25043-5ac1-4b52-98a5-63f25f872374">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="66" height="30" uuid="ee385c50-2992-4566-a872-4a0a9d6e4f27"/>
+								<text><![CDATA[EXENTAS]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="66" height="30" uuid="1e58739e-57e3-403a-8c47-86692114bf9f"/>
+								<textFieldExpression><![CDATA[$F{EXENTAS}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="aa5ae043-b7f2-42fc-949f-99aa27ede11d">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="9a1669a2-446d-4afd-bcc6-56c1caab2700"/>
+								<text><![CDATA[5%]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="30" uuid="6a865a9a-450e-42f5-a9d1-f63205f63edb"/>
+								<textFieldExpression><![CDATA[$F{5%}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="59" uuid="eecf90c9-747b-4ad5-829d-4ed29f99aa0e">
+						<jr:tableHeader style="Table_TH" height="30"/>
+						<jr:tableFooter style="Table_TH" height="30"/>
+						<jr:columnHeader style="Table_CH" height="30">
+							<staticText>
+								<reportElement x="0" y="0" width="59" height="30" uuid="78a9a1c9-8b4e-4589-ac04-1b168f3360e6"/>
+								<text><![CDATA[10%]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="Table_CH" height="30"/>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="59" height="30" uuid="3fffe835-eaa3-4c92-ba96-08e623489b68"/>
+								<textFieldExpression><![CDATA[$F{10%}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

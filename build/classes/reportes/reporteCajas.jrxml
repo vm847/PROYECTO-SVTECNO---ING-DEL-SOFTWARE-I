@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="focusart_compras" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79e751cf-9b22-46f5-ae74-2670f5ff464c">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="mariaDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="280"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="709"/>
+	<parameter name="fecha_desde" class="java.util.Date"/>
+	<parameter name="fecha_hasta" class="java.util.Date"/>
+	<parameter name="desde" class="java.lang.String"/>
+	<parameter name="hasta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT c.cod_caja,
+	u.nom_usuario,
+	c.fecha_apertura_caja,
+	c.fecha_cierre_caja,
+	c.usuario_reapertura,
+	c.usuario_insercion,
+	c.fecha_insercion
+FROM cajas c
+	join usuarios u ON 
+	c.cod_usuario = u.cod_usuario 
+WHERE  c.fecha_apertura_caja >= $P{desde}  AND c.fecha_apertura_caja <=  $P{hasta}]]>
+	</queryString>
+	<field name="cod_caja" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="cod_caja"/>
+		<property name="com.jaspersoft.studio.field.label" value="cod_caja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<field name="nom_usuario" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nom_usuario"/>
+		<property name="com.jaspersoft.studio.field.label" value="nom_usuario"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="usuarios"/>
+	</field>
+	<field name="fecha_apertura_caja" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_apertura_caja"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_apertura_caja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<field name="fecha_cierre_caja" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_cierre_caja"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_cierre_caja"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<field name="usuario_reapertura" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="usuario_reapertura"/>
+		<property name="com.jaspersoft.studio.field.label" value="usuario_reapertura"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<field name="usuario_insercion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="usuario_insercion"/>
+		<property name="com.jaspersoft.studio.field.label" value="usuario_insercion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<field name="fecha_insercion" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="fecha_insercion"/>
+		<property name="com.jaspersoft.studio.field.label" value="fecha_insercion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cajas"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="165" y="0" width="233" height="32" backcolor="#FFFFFF" uuid="6842520f-9fc5-4489-b221-b831bacc2760"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INVERFIN S.A.E.C.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="47" width="233" height="15" uuid="34f143d5-cffc-4164-bbd8-eaa523a49cd1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tel/Cel: 0212883000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="77" width="233" height="18" uuid="0ee0344f-02c9-4c9d-b681-a891c2faae74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LISTA DE CAJAS]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="76" width="100" height="20" uuid="7658e4c9-8418-4c01-959d-90d189826455"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="455" y="56" width="100" height="20" uuid="26e5641e-40a4-4ea5-b93b-b691a0e1565a"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="32" width="233" height="15" uuid="e848366d-3487-4264-b725-c49356987abb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Avda. Artigas 3968]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="62" width="233" height="15" uuid="c6b097f7-849d-4470-a1d9-006cab7e6943"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Concepción - Paraguay]]></text>
+			</staticText>
+			<rectangle radius="2">
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="95" forecolor="#999999" backcolor="#FFFFFF" uuid="fca08e6d-07b7-404f-913c-5861f35dca65"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="340" y="0" width="100" height="18" uuid="bbf81b1f-3eab-44b3-96ab-693ce2a1913b"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_hasta}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="0" width="50" height="18" uuid="d84243e1-414f-4a6e-a75f-0f1df10e23e6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[HASTA:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="190" y="0" width="100" height="18" uuid="d9e13d4e-7158-4e69-af8d-460382227684"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{fecha_desde}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="140" y="0" width="50" height="18" uuid="da1c8994-a7ab-41bb-860c-4774bc64c6cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[DESDE:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="17" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="395" y="0" width="80" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="6122edca-e639-4673-9158-f15355812873">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSERSION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="0" width="31" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="8717a03f-59be-4055-ae74-cd33504cf516"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[COD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="30" y="0" width="125" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="380a3c58-1fff-40e9-b778-5f70fccb7fd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAJERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="315" y="0" width="80" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="4a3cbff7-3f40-4eb0-9098-850aa592523f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REAPERTURA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="475" y="0" width="80" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="798e982c-f602-423a-bac7-ce1d30137f6a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="235" y="0" width="80" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="93117829-7056-4c0d-954e-5c85baca4d66">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CIERRE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="15" width="555" height="1" uuid="c9ac1dd3-e310-4dc8-8fc0-f111735fe941"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="155" y="0" width="80" height="15" forecolor="#FFFFFF" backcolor="#666666" uuid="982136bb-33eb-4e44-b59f-5d674727156d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[APERTURA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="-1" width="31" height="21" uuid="80f1f88d-1167-4be7-8ae7-dd9e1b8e5f90">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="22f8ec3a-d737-45f0-bd2a-22cb449784d9"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cod_caja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="-2" width="125" height="22" uuid="9616335a-0048-49eb-a341-c1b3b4ff4455">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f8ae7c8-6e46-4750-8cc1-d04c005a429b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nom_usuario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="155" y="-1" width="80" height="21" uuid="08caf02e-8431-4ce0-bc01-2f1fdb0b46b3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6d414496-e5bc-4570-b9ef-f5626c64364a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_apertura_caja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="-1" width="80" height="21" uuid="19469691-03e5-4684-b55c-e7d81a378ddf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="bad807bd-391e-4513-9a64-e5fb796f44c1"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_cierre_caja}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="315" y="-1" width="80" height="21" uuid="2123ac6f-847e-495f-a68e-97477ed7b7b5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f821a82-f3b2-4743-b8ac-d77c311af71d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_reapertura}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="-2" width="80" height="22" uuid="96c6f45e-3419-44e0-81ba-2c41fdcfe6ff">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7587254b-85d5-4b10-8d9e-10140d951085"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{usuario_insercion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="-1" width="80" height="21" uuid="5166c81a-da94-4cbe-83a4-c5cdd05bf873">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="15a9fc07-cdeb-4d33-89bb-0c8e7840196f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha_insercion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="20" width="556" height="1" uuid="d4afda72-e0a7-4ae1-85e5-77782759fa89"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<summary>
+		<band height="34" splitType="Stretch"/>
+	</summary>
+</jasperReport>
